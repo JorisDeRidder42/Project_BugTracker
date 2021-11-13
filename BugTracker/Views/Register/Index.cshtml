@@ -1,16 +1,64 @@
 ﻿@{
     ViewData["Title"] = "Register Page";
 }
-
 <div class="container">
-    <div class="row min-vh-100 align-items-center">
-        <div class="col-6 pb-5">
-            <h1 class="font-weight-bold h1">Register page</h1>
-            <p>A module to keeps track of <b>reported software bugs</b> in software development <b>projects.</b></p>
-            <button class="btn btn-outline-primary px-5">REGISTER</button>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="blok">
+                <div class="midden align-items-center">
+                    <h1 class="font-weight-bold h1 text-white">Welcome back</h1>
+                    <p class="text-white">To make use of the bug tracker you need to log in first.</p>
+                    <button class="btn btn-outline-light">LOG IN</button>
+                </div>
+            </div>
         </div>
-        <div class="col-6 pb-5">
-            <img src="~/Images/bugtracking.png" alt="bugtrack" runat="server" />
+        <div class="col-md-6">
+            <div class="blok1">
+                <h1 class="font-weight-bold h1 text-center">Create account</h1>
+                <form>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="name" class="form-label">firstname</label>
+                            <input type="text" class="form-control" placeholder="Firstname">
+                        </div>
+
+                        <div class="col">
+                            <label for="name" class="form-label">lastname</label>
+                            <input type="text" class="form-control" placeholder="Last name">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="birthofdate" class="form-label">Birth of date</label>
+                        <input type="date" class="form-control" id="birthofdate" placeholder="Birth of date">
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">I agree to the Terms and Policy</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                        <label class="form-check-label" for="exampleCheck1">Allow E-mail notifications</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">SIGN UP</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
