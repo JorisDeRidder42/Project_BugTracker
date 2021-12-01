@@ -7,6 +7,5 @@ namespace BugTracker.ViewModel
 {
     public class OverzichtBugsViewModel
     {
-        public int MyProperty { get; set; }
     }
 }
