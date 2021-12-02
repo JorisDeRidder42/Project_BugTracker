@@ -2,6 +2,7 @@ using BugTracker.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,11 +28,11 @@ namespace BugTracker
         {
             services.AddControllersWithViews();
             services.AddDbContext<BugTrackerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BugTrackerDBConnection")));
-            //services.AddDefaultIdentity<CustomUser>()
-            //    .AddEntityFrameworkStores<BugTrackerContext>();
-            //services.Configure<IdentityOptions>(options =>
+            services.AddDefaultIdentity<IdentityUser>()
+            .AddEntityFrameworkStores<BugTrackerContext>();
+            //services.Configure<CustomUser>(options =>
             //{
-            //    options.Password.RequireUppercase = true;
+            //    //options.Password.RequireUppercase = true;
             //});
         }
 
@@ -61,6 +62,7 @@ namespace BugTracker
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
