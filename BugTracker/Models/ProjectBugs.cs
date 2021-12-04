@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace BugTracker.Models
 {
+    [Table("ProjectBugs", Schema = "BugTracker")]
     public class ProjectBugs
     {
         [Key]
@@ -14,7 +16,7 @@ namespace BugTracker.Models
         public int ProjectsID { get; set; }
         public int BugsID { get; set; }
 
-        public ICollection<Bugs> Bugs { get; set; }
-        public ICollection<Projects> Projects { get; set; }
+        public Bugs Bugs { get; set; }
+        public Projects Projects { get; set; }
     }
 }

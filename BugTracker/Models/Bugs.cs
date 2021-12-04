@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BugTracker.Models
 {
+    [Table("Bugs", Schema = "BugTracker")]
     public class Bugs
     {
         [Key]
@@ -35,5 +36,10 @@ namespace BugTracker.Models
 
         [DataType(DataType.Date)]
         public DateTime BugClosedOn { get; set; }
+
+        public ICollection<ProjectBugs> ProjectBugs { get; set; }
+        public ICollection<User> Users { get; set; }
+        public BugStatus BugStatus { get; set; }
+        public BugsPriority BugsPriority { get; set; }
     }
 }
