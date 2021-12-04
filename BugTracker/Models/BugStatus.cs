@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BugTracker.Models
 {
-    [Table("BugsStatus", Schema = "BugTracker")]
+    [Table("BugStatus", Schema = "BugTracker")]
     public class BugStatus
     {
         [Key]

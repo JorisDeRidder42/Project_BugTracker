@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace BugTracker.Models
 {
-    [Table("Bugs", Schema = "BugTracker")]
+    [Table("BugsPriority", Schema = "BugTracker")]
     public class BugsPriority
     {
         [Key]
         public int BugsPriorityID { get; set; }
 
         public string PriorityType { get; set; }
-        public ICollection<Bugs> Bugs { get; set; }
+        public Bugs Bugs { get; set; }
     }
 }
