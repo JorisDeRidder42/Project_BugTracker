@@ -27,14 +27,10 @@ namespace BugTracker
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<BugTrackerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BugTrackerDBConnection")));
+            services.AddDbContext<BugTrackerContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("BugTrackerDBConnection")));
             services.AddDefaultIdentity<IdentityUser>()
             .AddEntityFrameworkStores<BugTrackerContext>();
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Password.RequireUppercase = true;
-                options.Password.RequiredLength = 6;
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
