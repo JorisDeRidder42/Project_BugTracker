@@ -1,4 +1,6 @@
 ﻿using BugTracker.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BugTracker.Data
 {
-    public class BugTrackerContext : DbContext
+    public class BugTrackerContext : IdentityDbContext<IdentityUser>
     {
         public BugTrackerContext(DbContextOptions<BugTrackerContext> options) : base(options)
         {

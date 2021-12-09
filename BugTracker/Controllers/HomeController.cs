@@ -1,4 +1,6 @@
-﻿using BugTracker.Models;
+﻿using BugTracker.Data;
+using BugTracker.Models;
+using BugTracker.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,16 +13,27 @@ namespace BugTracker.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly BugTrackerContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(BugTrackerContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
+            //OverzichtBugsViewModel viewModel = new OverzichtBugsViewModel();
+            //return viewModel();
             return View();
+        }
+
+        public IActionResult User()
+        {
+            List<User> users = new List<User>();
+
+            users.Add(new User() { UserID = 1, FirstName = "Joris", LastName = "De Ridder", UserName = "Heufd", AllowEmailNotification = true, Email = "Joris.42@hotmail.com", GeboorteDatum = new System.DateTime(1997, 02, 21), Password = "Meloen" }); ;
+            users.Add(new User() { UserID = 2, FirstName = "Alec", LastName = "Van Oosterwick", UserName = "Tankzwaluw", AllowEmailNotification = true, Email = "VanOosterwijckAlec@gmail.com", GeboorteDatum = new System.DateTime(2002, 10, 11), Password = "DikkeJood123" }); ;
+            return View(users);
         }
 
         public IActionResult Privacy()
@@ -29,6 +42,11 @@ namespace BugTracker.Controllers
         }
 
         public IActionResult Help()
+        {
+            return View();
+        }
+
+        public IActionResult Create()
         {
             return View();
         }
