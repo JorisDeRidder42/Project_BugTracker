@@ -147,12 +147,9 @@ D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\scop
 D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\BugTracker.TagHelpers.input.cache
 D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\BugTracker.TagHelpers.output.cache
 D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\BugTracker.RazorCoreGenerate.cache
-D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\Create.cshtml.g.cs
 D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\Help.cshtml.g.cs
 D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
-D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\User.cshtml.g.cs
-D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Register\Index.cshtml.g.cs
 D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
