@@ -21,7 +21,7 @@ namespace BugTracker.Data
         public DbSet<ProjectBugs> ProjectBugs { get; set; }
         public DbSet<Projects> Projects { get; set; }
         public DbSet<ProjectsAcces> ProjectsAcces { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,9 +33,8 @@ namespace BugTracker.Data
             modelBuilder.Entity<BugStatus>().ToTable("BugStatus");
             modelBuilder.Entity<ProjectsAcces>().ToTable("ProjectsAcces");
             modelBuilder.Entity<BugStatus>().ToTable("BugStatus");
+            modelBuilder.Entity<BugsPriority>().ToTable("BugsPriority");
             modelBuilder.Entity<Bugs>().ToTable("Bugs");
-
-            //builder klasse oo concept (design patern)
         }
     }
 }
