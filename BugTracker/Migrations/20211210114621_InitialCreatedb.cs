@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BugTracker.Migrations
 {
-    public partial class AddIdentitySchema : Migration
+    public partial class InitialCreatedb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

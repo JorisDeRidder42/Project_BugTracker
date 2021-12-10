@@ -202,3 +202,4 @@ D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razo
 D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+D:\Project_BugTracker\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\Index.cshtml.g.cs
