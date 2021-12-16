@@ -26,6 +26,8 @@ namespace BugTracker.Models
 
         public string Description { get; set; }
 
+        public ICollection<TeamProject> TeamProjects { get; set; }
+
         public ICollection<ProjectsAcces> ProjectsAcces { get; set; }
         public ICollection<ProjectBugs> ProjectBugs { get; set; }
     }

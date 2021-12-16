@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "036c0ec8-c8e4-4197-870d-9657b581238a": {
+      "ProjectGuid": "036c0ec8-c8e4-4197-870d-9657b581238a",
+      "DisplayName": "BugTracker",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

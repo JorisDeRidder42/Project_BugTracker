@@ -13,7 +13,7 @@ namespace BugTracker.Models
         [Key]
         public int BugsID { get; set; }
 
-        public int BugsPriorityId { get; set; }
+        public int? BugsPriorityID { get; set; }
 
         public int BugStatusID { get; set; }
 
@@ -35,11 +35,11 @@ namespace BugTracker.Models
         public string BugClosedBy { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime BugClosedOn { get; set; }
+        public DateTime? BugClosedOn { get; set; }
 
         public ICollection<ProjectBugs> ProjectBugs { get; set; }
-        public ICollection<User> User { get; set; }
+        public User User { get; set; }
         public BugStatus BugStatus { get; set; }
-        public ICollection<BugsPriority> BugsPriority { get; set; }
+        public BugsPriority BugsPriority { get; set; }
     }
 }

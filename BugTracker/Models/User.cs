@@ -13,7 +13,7 @@ namespace BugTracker.Models
         [Key]
         public int UserID { get; set; }
 
-        public int BugID { get; set; }
+        public int BugsID { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
 
@@ -26,6 +26,7 @@ namespace BugTracker.Models
         public bool? AllowEmailNotification { get; set; }
 
         public ICollection<ProjectsAcces> ProjectsAcces { get; set; }
-        public Bugs Bugs { get; set; }
+        public ICollection<Bugs> Bugs { get; set; }
+        public ICollection<Team> Teams { get; set; }
     }
 }
