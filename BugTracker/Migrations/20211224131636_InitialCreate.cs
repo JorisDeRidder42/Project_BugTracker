@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BugTracker.Migrations
 {
-    public partial class InitialCreatedb : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,6 +12,7 @@ namespace BugTracker.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
+                schema: "BugTracker",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -25,13 +26,58 @@ namespace BugTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
+                name: "BugsPriority",
+                schema: "BugTracker",
+                columns: table => new
+                {
+                    BugsPriorityId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PriorityType = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BugsPriority", x => x.BugsPriorityId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BugStatus",
+                schema: "BugTracker",
+                columns: table => new
+                {
+                    BugStatusId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BugStatusType = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BugStatus", x => x.BugStatusId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Projects",
+                schema: "BugTracker",
+                columns: table => new
+                {
+                    ProjectsId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectName = table.Column<string>(nullable: true),
+                    StartDate = table.Column<DateTime>(nullable: false),
+                    EndDate = table.Column<DateTime>(nullable: true),
+                    Status = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.ProjectsId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                schema: "BugTracker",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
-                    Email = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
                     PasswordHash = table.Column<string>(nullable: true),
@@ -42,47 +88,25 @@ namespace BugTracker.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    ApplicationId = table.Column<int>(nullable: false),
+                    BugsId = table.Column<int>(nullable: false),
+                    UserName = table.Column<string>(maxLength: 256, nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    GeboorteDatum = table.Column<DateTime>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(maxLength: 256, nullable: true),
+                    AllowEmailNotification = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BugStatus",
-                schema: "BugTracker",
-                columns: table => new
-                {
-                    BugStatusID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BugStatusType = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BugStatus", x => x.BugStatusID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Projects",
-                schema: "BugTracker",
-                columns: table => new
-                {
-                    ProjectsID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectName = table.Column<string>(nullable: true),
-                    StartDate = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: true),
-                    Status = table.Column<string>(nullable: false),
-                    Description = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Projects", x => x.ProjectsID);
+                    table.PrimaryKey("PK_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
+                schema: "BugTracker",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -97,6 +121,7 @@ namespace BugTracker.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
                         column: x => x.RoleId,
+                        principalSchema: "BugTracker",
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -104,6 +129,7 @@ namespace BugTracker.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
+                schema: "BugTracker",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -116,15 +142,17 @@ namespace BugTracker.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUserClaims_AspNetUsers_UserId",
+                        name: "FK_AspNetUserClaims_User_UserId",
                         column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        principalSchema: "BugTracker",
+                        principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserLogins",
+                schema: "BugTracker",
                 columns: table => new
                 {
                     LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
@@ -136,15 +164,17 @@ namespace BugTracker.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
                     table.ForeignKey(
-                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
+                        name: "FK_AspNetUserLogins_User_UserId",
                         column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        principalSchema: "BugTracker",
+                        principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserRoles",
+                schema: "BugTracker",
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
@@ -156,19 +186,22 @@ namespace BugTracker.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
                         column: x => x.RoleId,
+                        principalSchema: "BugTracker",
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
+                        name: "FK_AspNetUserRoles_User_UserId",
                         column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        principalSchema: "BugTracker",
+                        principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserTokens",
+                schema: "BugTracker",
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
@@ -180,9 +213,10 @@ namespace BugTracker.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
                     table.ForeignKey(
-                        name: "FK_AspNetUserTokens_AspNetUsers_UserId",
+                        name: "FK_AspNetUserTokens_User_UserId",
                         column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        principalSchema: "BugTracker",
+                        principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -192,107 +226,42 @@ namespace BugTracker.Migrations
                 schema: "BugTracker",
                 columns: table => new
                 {
-                    BugsID = table.Column<int>(nullable: false)
+                    BugsId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BugsPriorityId = table.Column<int>(nullable: false),
-                    BugStatusID = table.Column<int>(nullable: false),
+                    BugsPriorityId = table.Column<int>(nullable: true),
+                    BugStatusId = table.Column<int>(nullable: false),
                     BugTitle = table.Column<string>(nullable: false),
                     BugDescription = table.Column<string>(nullable: false),
                     BugType = table.Column<string>(nullable: false),
                     BugCreatedBy = table.Column<string>(nullable: false),
                     BugCreatedOn = table.Column<DateTime>(nullable: false),
                     BugClosedBy = table.Column<string>(nullable: true),
-                    BugClosedOn = table.Column<DateTime>(nullable: false)
+                    BugClosedOn = table.Column<DateTime>(nullable: true),
+                    ApplicationUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Bugs", x => x.BugsID);
+                    table.PrimaryKey("PK_Bugs", x => x.BugsId);
                     table.ForeignKey(
-                        name: "FK_Bugs_BugStatus_BugStatusID",
-                        column: x => x.BugStatusID,
+                        name: "FK_Bugs_User_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalSchema: "BugTracker",
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Bugs_BugStatus_BugStatusId",
+                        column: x => x.BugStatusId,
                         principalSchema: "BugTracker",
                         principalTable: "BugStatus",
-                        principalColumn: "BugStatusID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BugsPriority",
-                schema: "BugTracker",
-                columns: table => new
-                {
-                    BugsPriorityID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PriorityType = table.Column<string>(nullable: true),
-                    BugsID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BugsPriority", x => x.BugsPriorityID);
-                    table.ForeignKey(
-                        name: "FK_BugsPriority_Bugs_BugsID",
-                        column: x => x.BugsID,
-                        principalSchema: "BugTracker",
-                        principalTable: "Bugs",
-                        principalColumn: "BugsID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProjectBugs",
-                schema: "BugTracker",
-                columns: table => new
-                {
-                    ProjectBugsID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectsID = table.Column<int>(nullable: false),
-                    BugsID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjectBugs", x => x.ProjectBugsID);
-                    table.ForeignKey(
-                        name: "FK_ProjectBugs_Bugs_BugsID",
-                        column: x => x.BugsID,
-                        principalSchema: "BugTracker",
-                        principalTable: "Bugs",
-                        principalColumn: "BugsID",
+                        principalColumn: "BugStatusId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProjectBugs_Projects_ProjectsID",
-                        column: x => x.ProjectsID,
+                        name: "FK_Bugs_BugsPriority_BugsPriorityId",
+                        column: x => x.BugsPriorityId,
                         principalSchema: "BugTracker",
-                        principalTable: "Projects",
-                        principalColumn: "ProjectsID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "User",
-                schema: "BugTracker",
-                columns: table => new
-                {
-                    UserID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BugID = table.Column<int>(nullable: false),
-                    UserName = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    GeboorteDatum = table.Column<DateTime>(nullable: false),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    AllowEmailNotification = table.Column<bool>(nullable: true),
-                    BugsID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.UserID);
-                    table.ForeignKey(
-                        name: "FK_User_Bugs_BugsID",
-                        column: x => x.BugsID,
-                        principalSchema: "BugTracker",
-                        principalTable: "Bugs",
-                        principalColumn: "BugsID",
+                        principalTable: "BugsPriority",
+                        principalColumn: "BugsPriorityId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -301,37 +270,122 @@ namespace BugTracker.Migrations
                 schema: "BugTracker",
                 columns: table => new
                 {
-                    ProjectAccesID = table.Column<int>(nullable: false)
+                    ProjectAccesId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectsID = table.Column<int>(nullable: false),
-                    UserID = table.Column<int>(nullable: false)
+                    ProjectsId = table.Column<int>(nullable: false),
+                    ApplicationId = table.Column<int>(nullable: false),
+                    ApplicationUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProjectsAcces", x => x.ProjectAccesID);
+                    table.PrimaryKey("PK_ProjectsAcces", x => x.ProjectAccesId);
                     table.ForeignKey(
-                        name: "FK_ProjectsAcces_Projects_ProjectsID",
-                        column: x => x.ProjectsID,
-                        principalSchema: "BugTracker",
-                        principalTable: "Projects",
-                        principalColumn: "ProjectsID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProjectsAcces_User_UserID",
-                        column: x => x.UserID,
+                        name: "FK_ProjectsAcces_User_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
                         principalSchema: "BugTracker",
                         principalTable: "User",
-                        principalColumn: "UserID",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProjectsAcces_Projects_ProjectsId",
+                        column: x => x.ProjectsId,
+                        principalSchema: "BugTracker",
+                        principalTable: "Projects",
+                        principalColumn: "ProjectsId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Teams",
+                schema: "BugTracker",
+                columns: table => new
+                {
+                    TeamId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TeamNaam = table.Column<string>(nullable: true),
+                    AantalPersonen = table.Column<int>(nullable: false),
+                    ApplicationUserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Teams", x => x.TeamId);
+                    table.ForeignKey(
+                        name: "FK_Teams_User_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalSchema: "BugTracker",
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProjectBugs",
+                schema: "BugTracker",
+                columns: table => new
+                {
+                    ProjectBugsId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectsId = table.Column<int>(nullable: false),
+                    BugsId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectBugs", x => x.ProjectBugsId);
+                    table.ForeignKey(
+                        name: "FK_ProjectBugs_Bugs_BugsId",
+                        column: x => x.BugsId,
+                        principalSchema: "BugTracker",
+                        principalTable: "Bugs",
+                        principalColumn: "BugsId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProjectBugs_Projects_ProjectsId",
+                        column: x => x.ProjectsId,
+                        principalSchema: "BugTracker",
+                        principalTable: "Projects",
+                        principalColumn: "ProjectsId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TeamProject",
+                schema: "BugTracker",
+                columns: table => new
+                {
+                    TeamProjectId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectId = table.Column<int>(nullable: false),
+                    TeamId = table.Column<int>(nullable: false),
+                    ProjectsId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TeamProject", x => x.TeamProjectId);
+                    table.ForeignKey(
+                        name: "FK_TeamProject_Projects_ProjectsId",
+                        column: x => x.ProjectsId,
+                        principalSchema: "BugTracker",
+                        principalTable: "Projects",
+                        principalColumn: "ProjectsId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_TeamProject_Teams_TeamId",
+                        column: x => x.TeamId,
+                        principalSchema: "BugTracker",
+                        principalTable: "Teams",
+                        principalColumn: "TeamId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
+                schema: "BugTracker",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
+                schema: "BugTracker",
                 table: "AspNetRoles",
                 column: "NormalizedName",
                 unique: true,
@@ -339,93 +393,117 @@ namespace BugTracker.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
+                schema: "BugTracker",
                 table: "AspNetUserClaims",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserLogins_UserId",
+                schema: "BugTracker",
                 table: "AspNetUserLogins",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserRoles_RoleId",
+                schema: "BugTracker",
                 table: "AspNetUserRoles",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Bugs_ApplicationUserId",
+                schema: "BugTracker",
+                table: "Bugs",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bugs_BugStatusId",
+                schema: "BugTracker",
+                table: "Bugs",
+                column: "BugStatusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bugs_BugsPriorityId",
+                schema: "BugTracker",
+                table: "Bugs",
+                column: "BugsPriorityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectBugs_BugsId",
+                schema: "BugTracker",
+                table: "ProjectBugs",
+                column: "BugsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectBugs_ProjectsId",
+                schema: "BugTracker",
+                table: "ProjectBugs",
+                column: "ProjectsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectsAcces_ApplicationUserId",
+                schema: "BugTracker",
+                table: "ProjectsAcces",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectsAcces_ProjectsId",
+                schema: "BugTracker",
+                table: "ProjectsAcces",
+                column: "ProjectsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeamProject_ProjectsId",
+                schema: "BugTracker",
+                table: "TeamProject",
+                column: "ProjectsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeamProject_TeamId",
+                schema: "BugTracker",
+                table: "TeamProject",
+                column: "TeamId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Teams_ApplicationUserId",
+                schema: "BugTracker",
+                table: "Teams",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "EmailIndex",
-                table: "AspNetUsers",
+                schema: "BugTracker",
+                table: "User",
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
-                table: "AspNetUsers",
+                schema: "BugTracker",
+                table: "User",
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Bugs_BugStatusID",
-                schema: "BugTracker",
-                table: "Bugs",
-                column: "BugStatusID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BugsPriority_BugsID",
-                schema: "BugTracker",
-                table: "BugsPriority",
-                column: "BugsID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProjectBugs_BugsID",
-                schema: "BugTracker",
-                table: "ProjectBugs",
-                column: "BugsID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProjectBugs_ProjectsID",
-                schema: "BugTracker",
-                table: "ProjectBugs",
-                column: "ProjectsID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProjectsAcces_ProjectsID",
-                schema: "BugTracker",
-                table: "ProjectsAcces",
-                column: "ProjectsID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProjectsAcces_UserID",
-                schema: "BugTracker",
-                table: "ProjectsAcces",
-                column: "UserID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_BugsID",
-                schema: "BugTracker",
-                table: "User",
-                column: "BugsID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AspNetRoleClaims");
+                name: "AspNetRoleClaims",
+                schema: "BugTracker");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserClaims");
+                name: "AspNetUserClaims",
+                schema: "BugTracker");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserLogins");
+                name: "AspNetUserLogins",
+                schema: "BugTracker");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserRoles");
+                name: "AspNetUserRoles",
+                schema: "BugTracker");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "BugsPriority",
+                name: "AspNetUserTokens",
                 schema: "BugTracker");
 
             migrationBuilder.DropTable(
@@ -437,17 +515,11 @@ namespace BugTracker.Migrations
                 schema: "BugTracker");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Projects",
+                name: "TeamProject",
                 schema: "BugTracker");
 
             migrationBuilder.DropTable(
-                name: "User",
+                name: "AspNetRoles",
                 schema: "BugTracker");
 
             migrationBuilder.DropTable(
@@ -455,7 +527,23 @@ namespace BugTracker.Migrations
                 schema: "BugTracker");
 
             migrationBuilder.DropTable(
+                name: "Projects",
+                schema: "BugTracker");
+
+            migrationBuilder.DropTable(
+                name: "Teams",
+                schema: "BugTracker");
+
+            migrationBuilder.DropTable(
                 name: "BugStatus",
+                schema: "BugTracker");
+
+            migrationBuilder.DropTable(
+                name: "BugsPriority",
+                schema: "BugTracker");
+
+            migrationBuilder.DropTable(
+                name: "User",
                 schema: "BugTracker");
         }
     }

@@ -11,7 +11,7 @@ namespace BugTracker.Models
     public class BugStatus
     {
         [Key]
-        public int BugStatusID { get; set; }
+        public int BugStatusId { get; set; }
 
         public string BugStatusType { get; set; }
 

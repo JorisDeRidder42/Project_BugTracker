@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BugTracker.Areas.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,13 +12,13 @@ namespace BugTracker.Models
     public class ProjectsAcces
     {
         [Key]
-        public int ProjectAccesID { get; set; }
+        public int ProjectAccesId { get; set; }
 
-        public int ProjectsID { get; set; }
+        public int ProjectsId { get; set; }
 
-        public int UserID { get; set; }
+        public int ApplicationId { get; set; }
 
         public Projects Projects { get; set; }
-        public User User { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

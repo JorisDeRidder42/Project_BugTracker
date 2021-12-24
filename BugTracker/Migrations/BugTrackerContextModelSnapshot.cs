@@ -15,13 +15,100 @@ namespace BugTracker.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("BugTracker")
                 .HasAnnotation("ProductVersion", "3.1.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("BugTracker.Areas.Data.ApplicationUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("AllowEmailNotification")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ApplicationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BugsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("GeboorteDatum")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("ApplicationUser");
+                });
+
             modelBuilder.Entity("BugTracker.Models.BugStatus", b =>
                 {
-                    b.Property<int>("BugStatusID")
+                    b.Property<int>("BugStatusId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -29,17 +116,23 @@ namespace BugTracker.Migrations
                     b.Property<string>("BugStatusType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("BugStatusID");
+                    b.HasKey("BugStatusId");
 
                     b.ToTable("BugStatus","BugTracker");
                 });
 
             modelBuilder.Entity("BugTracker.Models.Bugs", b =>
                 {
-                    b.Property<int>("BugsID")
+                    b.Property<int>("BugsId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ApplicationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("BugClosedBy")
                         .HasColumnType("nvarchar(max)");
@@ -58,7 +151,7 @@ namespace BugTracker.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("BugStatusID")
+                    b.Property<int>("BugStatusId")
                         .HasColumnType("int");
 
                     b.Property<string>("BugTitle")
@@ -69,26 +162,23 @@ namespace BugTracker.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("BugsPriorityID")
+                    b.Property<int?>("BugsPriorityId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserID")
-                        .HasColumnType("int");
+                    b.HasKey("BugsId");
 
-                    b.HasKey("BugsID");
+                    b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("BugStatusID");
+                    b.HasIndex("BugStatusId");
 
-                    b.HasIndex("BugsPriorityID");
-
-                    b.HasIndex("UserID");
+                    b.HasIndex("BugsPriorityId");
 
                     b.ToTable("Bugs","BugTracker");
                 });
 
             modelBuilder.Entity("BugTracker.Models.BugsPriority", b =>
                 {
-                    b.Property<int>("BugsPriorityID")
+                    b.Property<int>("BugsPriorityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -96,41 +186,42 @@ namespace BugTracker.Migrations
                     b.Property<string>("PriorityType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("BugsPriorityID");
+                    b.HasKey("BugsPriorityId");
 
                     b.ToTable("BugsPriority","BugTracker");
                 });
 
             modelBuilder.Entity("BugTracker.Models.ProjectBugs", b =>
                 {
-                    b.Property<int>("ProjectBugsID")
+                    b.Property<int>("ProjectBugsId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BugsID")
+                    b.Property<int>("BugsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProjectsID")
+                    b.Property<int>("ProjectsId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProjectBugsID");
+                    b.HasKey("ProjectBugsId");
 
-                    b.HasIndex("BugsID");
+                    b.HasIndex("BugsId");
 
-                    b.HasIndex("ProjectsID");
+                    b.HasIndex("ProjectsId");
 
                     b.ToTable("ProjectBugs","BugTracker");
                 });
 
             modelBuilder.Entity("BugTracker.Models.Projects", b =>
                 {
-                    b.Property<int>("ProjectsID")
+                    b.Property<int>("ProjectsId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("EndDate")
@@ -146,36 +237,39 @@ namespace BugTracker.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProjectsID");
+                    b.HasKey("ProjectsId");
 
                     b.ToTable("Projects","BugTracker");
                 });
 
             modelBuilder.Entity("BugTracker.Models.ProjectsAcces", b =>
                 {
-                    b.Property<int>("ProjectAccesID")
+                    b.Property<int>("ProjectAccesId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ProjectsID")
+                    b.Property<int>("ApplicationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserID")
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ProjectsId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProjectAccesID");
+                    b.HasKey("ProjectAccesId");
 
-                    b.HasIndex("ProjectsID");
+                    b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("ProjectsId");
 
                     b.ToTable("ProjectsAcces","BugTracker");
                 });
 
             modelBuilder.Entity("BugTracker.Models.Team", b =>
                 {
-                    b.Property<int>("TeamID")
+                    b.Property<int>("TeamId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -183,78 +277,42 @@ namespace BugTracker.Migrations
                     b.Property<int>("AantalPersonen")
                         .HasColumnType("int");
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("TeamNaam")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserID")
-                        .HasColumnType("int");
+                    b.HasKey("TeamId");
 
-                    b.HasKey("TeamID");
-
-                    b.HasIndex("UserID");
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Teams","BugTracker");
                 });
 
             modelBuilder.Entity("BugTracker.Models.TeamProject", b =>
                 {
-                    b.Property<int>("TeamProjectID")
+                    b.Property<int>("TeamProjectId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ProjectID")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProjectsID")
+                    b.Property<int?>("ProjectsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TeamID")
+                    b.Property<int>("TeamId")
                         .HasColumnType("int");
 
-                    b.HasKey("TeamProjectID");
+                    b.HasKey("TeamProjectId");
 
-                    b.HasIndex("ProjectsID");
+                    b.HasIndex("ProjectsId");
 
-                    b.HasIndex("TeamID");
+                    b.HasIndex("TeamId");
 
                     b.ToTable("TeamProject");
-                });
-
-            modelBuilder.Entity("BugTracker.Models.User", b =>
-                {
-                    b.Property<int>("UserID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool?>("AllowEmailNotification")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("BugsID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("GeboorteDatum")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserID");
-
-                    b.ToTable("User","BugTracker");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -306,71 +364,6 @@ namespace BugTracker.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -459,67 +452,65 @@ namespace BugTracker.Migrations
 
             modelBuilder.Entity("BugTracker.Models.Bugs", b =>
                 {
+                    b.HasOne("BugTracker.Areas.Data.ApplicationUser", "ApplicationUser")
+                        .WithMany("Bugs")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("BugTracker.Models.BugStatus", "BugStatus")
                         .WithMany("Bugs")
-                        .HasForeignKey("BugStatusID")
+                        .HasForeignKey("BugStatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BugTracker.Models.BugsPriority", "BugsPriority")
                         .WithMany("Bugs")
-                        .HasForeignKey("BugsPriorityID");
-
-                    b.HasOne("BugTracker.Models.User", "User")
-                        .WithMany("Bugs")
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("BugsPriorityId");
                 });
 
             modelBuilder.Entity("BugTracker.Models.ProjectBugs", b =>
                 {
                     b.HasOne("BugTracker.Models.Bugs", "Bugs")
                         .WithMany("ProjectBugs")
-                        .HasForeignKey("BugsID")
+                        .HasForeignKey("BugsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BugTracker.Models.Projects", "Projects")
                         .WithMany("ProjectBugs")
-                        .HasForeignKey("ProjectsID")
+                        .HasForeignKey("ProjectsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("BugTracker.Models.ProjectsAcces", b =>
                 {
+                    b.HasOne("BugTracker.Areas.Data.ApplicationUser", "ApplicationUser")
+                        .WithMany("ProjectsAcces")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("BugTracker.Models.Projects", "Projects")
                         .WithMany("ProjectsAcces")
-                        .HasForeignKey("ProjectsID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BugTracker.Models.User", "User")
-                        .WithMany("ProjectsAcces")
-                        .HasForeignKey("UserID")
+                        .HasForeignKey("ProjectsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("BugTracker.Models.Team", b =>
                 {
-                    b.HasOne("BugTracker.Models.User", "User")
+                    b.HasOne("BugTracker.Areas.Data.ApplicationUser", "ApplicationUser")
                         .WithMany("Teams")
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("BugTracker.Models.TeamProject", b =>
                 {
                     b.HasOne("BugTracker.Models.Projects", "Projects")
                         .WithMany("TeamProjects")
-                        .HasForeignKey("ProjectsID");
+                        .HasForeignKey("ProjectsId");
 
                     b.HasOne("BugTracker.Models.Team", "Team")
                         .WithMany()
-                        .HasForeignKey("TeamID")
+                        .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -535,7 +526,7 @@ namespace BugTracker.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("BugTracker.Areas.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -544,7 +535,7 @@ namespace BugTracker.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("BugTracker.Areas.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -559,7 +550,7 @@ namespace BugTracker.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("BugTracker.Areas.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -568,7 +559,7 @@ namespace BugTracker.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("BugTracker.Areas.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

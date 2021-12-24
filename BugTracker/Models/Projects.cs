@@ -11,7 +11,7 @@ namespace BugTracker.Models
     public class Projects
     {
         [Key]
-        public int ProjectsID { get; set; }
+        public int ProjectsId { get; set; }
 
         public string ProjectName { get; set; }
 
@@ -24,6 +24,7 @@ namespace BugTracker.Models
         [Required]
         public string Status { get; set; }
 
+        [Required]
         public string Description { get; set; }
 
         public ICollection<TeamProject> TeamProjects { get; set; }

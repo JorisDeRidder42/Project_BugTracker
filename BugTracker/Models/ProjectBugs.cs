@@ -11,10 +11,10 @@ namespace BugTracker.Models
     public class ProjectBugs
     {
         [Key]
-        public int ProjectBugsID { get; set; }
+        public int ProjectBugsId { get; set; }
 
-        public int ProjectsID { get; set; }
-        public int BugsID { get; set; }
+        public int ProjectsId { get; set; }
+        public int BugsId { get; set; }
 
         public Bugs Bugs { get; set; }
         public Projects Projects { get; set; }

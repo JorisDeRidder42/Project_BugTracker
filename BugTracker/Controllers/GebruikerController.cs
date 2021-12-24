@@ -1,4 +1,5 @@
-﻿using BugTracker.Models;
+﻿using BugTracker.Areas.Data;
+using BugTracker.Models;
 using BugTracker.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -9,9 +10,9 @@ namespace BugTracker.Controllers
 {
     public class GebruikerController : Controller
     {
-        private UserManager<User> _gebruikerManager;
+        private UserManager<ApplicationUser> _gebruikerManager;
 
-        public GebruikerController(UserManager<User> userManager)
+        public GebruikerController(UserManager<ApplicationUser> userManager)
         {
             _gebruikerManager = userManager;
         }
@@ -20,9 +21,14 @@ namespace BugTracker.Controllers
         {
             GebruikerListViewModel gviewModel = new GebruikerListViewModel()
             {
-                Gebruikers = _gebruikerManager.Users.ToList()
+                ApplicationUsers = _gebruikerManager.Users.ToList()
             };
             return View(gviewModel);
+        }
+
+        public IActionResult Toevoegen()
+        {
+            return View();
         }
     }
 }

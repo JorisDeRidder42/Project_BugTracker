@@ -1,3 +1,4 @@
+using BugTracker.Areas.Data;
 using BugTracker.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,7 +30,7 @@ namespace BugTracker
             services.AddControllersWithViews();
             services.AddDbContext<BugTrackerContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("BugTrackerDBConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<ApplicationUser>()
             .AddEntityFrameworkStores<BugTrackerContext>();
         }
 

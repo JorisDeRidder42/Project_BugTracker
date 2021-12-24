@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BugTracker.Areas.Data;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BugTracker.Models
@@ -7,9 +8,10 @@ namespace BugTracker.Models
     public class Team
     {
         [Key]
-        public int TeamID { get; set; }
+        public int TeamId { get; set; }
+
         public string TeamNaam { get; set; }
         public int AantalPersonen { get; set; }
-        public User User { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

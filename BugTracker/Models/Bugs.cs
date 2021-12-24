@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BugTracker.Areas.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,11 +12,13 @@ namespace BugTracker.Models
     public class Bugs
     {
         [Key]
-        public int BugsID { get; set; }
+        public int BugsId { get; set; }
 
-        public int? BugsPriorityID { get; set; }
+        public int ApplicationId { get; set; }
 
-        public int BugStatusID { get; set; }
+        public int? BugsPriorityId { get; set; }
+
+        public int BugStatusId { get; set; }
 
         [Required]
         public string BugTitle { get; set; }
@@ -38,7 +41,7 @@ namespace BugTracker.Models
         public DateTime? BugClosedOn { get; set; }
 
         public ICollection<ProjectBugs> ProjectBugs { get; set; }
-        public User User { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
         public BugStatus BugStatus { get; set; }
         public BugsPriority BugsPriority { get; set; }
     }

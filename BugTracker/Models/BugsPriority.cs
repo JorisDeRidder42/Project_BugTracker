@@ -11,7 +11,7 @@ namespace BugTracker.Models
     public class BugsPriority
     {
         [Key]
-        public int BugsPriorityID { get; set; }
+        public int BugsPriorityId { get; set; }
 
         public string PriorityType { get; set; }
         public ICollection<Bugs> Bugs { get; set; }

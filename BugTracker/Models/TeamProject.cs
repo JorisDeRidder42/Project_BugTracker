@@ -6,9 +6,10 @@ namespace BugTracker.Models
     public class TeamProject
     {
         [Key]
-        public int TeamProjectID { get; set; }
-        public int ProjectID { get; set; }
-        public int TeamID { get; set; }
+        public int TeamProjectId { get; set; }
+
+        public int ProjectId { get; set; }
+        public int TeamId { get; set; }
 
         public Team Team { get; set; }
         public Projects Projects { get; set; }

@@ -1,4 +1,5 @@
-﻿using BugTracker.Models;
+﻿using BugTracker.Areas.Data;
+using BugTracker.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BugTracker.Data
 {
-    public class BugTrackerContext : IdentityDbContext<IdentityUser>
+    public class BugTrackerContext : IdentityDbContext<ApplicationUser>
     {
         public BugTrackerContext(DbContextOptions<BugTrackerContext> options) : base(options)
         {
@@ -21,13 +22,14 @@ namespace BugTracker.Data
         public DbSet<ProjectBugs> ProjectBugs { get; set; }
         public DbSet<Projects> Projects { get; set; }
         public DbSet<ProjectsAcces> ProjectsAcces { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasDefaultSchema("BugTracker");
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUser");
             modelBuilder.Entity<Projects>().ToTable("Projects");
             modelBuilder.Entity<ProjectBugs>().ToTable("ProjectBugs");
             modelBuilder.Entity<BugStatus>().ToTable("BugStatus");
