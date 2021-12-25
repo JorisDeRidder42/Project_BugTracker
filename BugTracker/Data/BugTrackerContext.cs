@@ -29,6 +29,7 @@ namespace BugTracker.Data
             modelBuilder.HasDefaultSchema("BugTracker");
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Bugs>().ToTable("Bugs");
             modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUser");
             modelBuilder.Entity<Projects>().ToTable("Projects");
             modelBuilder.Entity<ProjectBugs>().ToTable("ProjectBugs");

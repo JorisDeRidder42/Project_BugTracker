@@ -8,6 +8,8 @@ using System.Linq;
 
 namespace BugTracker.Controllers
 {
+    //[Area("Admin")]
+    //[Authorize(Roles = "Admin")]
     public class GebruikerController : Controller
     {
         private UserManager<ApplicationUser> _gebruikerManager;

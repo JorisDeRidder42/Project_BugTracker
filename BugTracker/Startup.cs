@@ -31,11 +31,13 @@ namespace BugTracker
             services.AddDbContext<BugTrackerContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("BugTrackerDBConnection")));
             services.AddDefaultIdentity<ApplicationUser>()
+                 .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<BugTrackerContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(
+            IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
