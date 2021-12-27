@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using BugTracker.Models;
+using BugTracker.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,10 +11,16 @@ namespace BugTracker.Controllers
 {
     public class DashboardController : Controller
     {
+        public List<Bugs> bugs;
+
         [Authorize]
         public IActionResult Index()
         {
-            return View();
+            OverzichtBugsViewModel viewModel = new OverzichtBugsViewModel();
+            {
+                viewModel.Bugs = bugs;
+            }
+            return View(viewModel);
         }
     }
 }

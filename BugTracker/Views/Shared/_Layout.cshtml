@@ -34,12 +34,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
                         </li>     
-                        @if(SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.GetUserAsync(User).Result, "admin"))
+                 @*       @if(SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.GetUserAsync(User).Result, "admin"))
                         {
                           <li class="nav-item">
                             <a class="nav-link text-light" asp-controller="Gebruiker" asp-action="Index">Users</a>
                         </li>      
-                        }
+                        }*@
                     </ul>
                 </div>
             </div>

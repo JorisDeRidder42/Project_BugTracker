@@ -8,15 +8,15 @@
     <thead>
         <tr> 
             <th class="col-md-2">
-                @Html.DisplayNameFor(v => v.ApplicationUsers[0].Email)
+                @Html.DisplayNameFor(v => v.Users[0].Email)
             </th>
             <th class="col-md-2">
-                @Html.DisplayNameFor(v => v.ApplicationUsers[0].Password)
+                @Html.DisplayNameFor(v => v.Users[0].Password)
             </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var application in Model.ApplicationUsers)
+        @foreach (var application in Model.Users)
         {
             <tr>
                 <td class="col-md-2">
@@ -26,8 +26,6 @@
                     @Html.DisplayFor(modelItem => application.Password)
                 </td>
                 <td class="col-md-2">
-                   @* <a asp-action="Edit" asp-route-id="@application.ApplicationID">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@application.ApplicationID">Delete</a>*@
                 </td>
             </tr>
         }

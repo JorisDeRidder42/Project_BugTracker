@@ -6,6 +6,6 @@ namespace BugTracker.ViewModel
 {
     public class GebruikerListViewModel
     {
-        public List<ApplicationUser> ApplicationUsers { get; set; }
+        public List<ApplicationUser> Users { get; set; }
     }
 }

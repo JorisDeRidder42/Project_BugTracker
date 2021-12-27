@@ -22,8 +22,6 @@ namespace BugTracker.Controllers
 
         public IActionResult Index()
         {
-            //OverzichtBugsViewModel viewModel = new OverzichtBugsViewModel();
-            //return viewModel();
             return View();
         }
 

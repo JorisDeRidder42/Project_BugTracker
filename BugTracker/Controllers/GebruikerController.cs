@@ -23,7 +23,7 @@ namespace BugTracker.Controllers
         {
             GebruikerListViewModel gviewModel = new GebruikerListViewModel()
             {
-                ApplicationUsers = _gebruikerManager.Users.ToList()
+                Users = _gebruikerManager.Users.ToList()
             };
             return View(gviewModel);
         }
