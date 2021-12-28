@@ -105,3 +105,8 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
+
+th.col-md-2 {
+    color: #4E55C7;
+    text-transform: uppercase;
+}

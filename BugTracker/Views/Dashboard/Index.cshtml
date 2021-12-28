@@ -44,23 +44,10 @@
                     <h1>My bugs</h1>
                 </div>
                 <div class="col-md-6 text-right">
-                    <button class="btn btn-primary text-right" asp-controller="Issue" asp-action="Index">Create issue</button>
+                    <a class="btn btn-primary text-right" asp-controller="Issue" asp-action="Index">Create issue</a>
                 </div>
             </div>
             <div class="row mt-5">
-                <div class="col-md-4">
-                    <p class="inline-p">BUG</p>
-                </div>
-                <div class="col-md-8 text-right">
-                    <p class="inline-p">STATUS</p>
-                    <p class="inline-p">CREATE</p>
-                    <p class="inline-p">DUE</p>
-                    <p class="inline-p">REPORTER</p>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="row mt-5">
                  <table>
                     <thead>
                         <tr> 
@@ -72,6 +59,18 @@
                             </th>
                             <th class="col-md-2">
                                 @Html.DisplayNameFor(v => v.Bugs[0].BugDescription)
+                            </th>
+                            <th class="col-md-2">
+                                @Html.DisplayNameFor(v => v.Bugs[0].BugStatus)
+                            </th>
+                             <th class="col-md-2">
+                                @Html.DisplayNameFor(v => v.Bugs[0].BugCreatedOn)
+                            </th>
+                             <th class="col-md-2">
+                                @Html.DisplayNameFor(v => v.Bugs[0].BugClosedOn)
+                            </th>
+                              <th class="col-md-2">
+                                @Html.DisplayNameFor(v => v.Bugs[0].BugCreatedBy)
                             </th>
                         </tr>
                     </thead>
@@ -88,9 +87,23 @@
                                 <td class="col-md-2">
                                     @Html.DisplayFor(modelItem => item.BugDescription)
                                 </td>
+                                <td class="col-md-2">
+                                    @Html.DisplayFor(modelItem => item.BugStatus)
+                                </td>
+                                <td class="col-md-2">
+                                    @Html.DisplayFor(modelItem => item.BugCreatedOn)
+                                </td>
+                                 <td class="col-md-2">
+                                    @Html.DisplayFor(modelItem => item.BugClosedOn)
+                                </td>
+                                  <td class="col-md-2">
+                                    @Html.DisplayFor(modelItem => item.BugClosedBy)
+                                </td>
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
 </div>

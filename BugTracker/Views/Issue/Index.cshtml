@@ -1,19 +1,89 @@
 ﻿@{
     ViewData["Title"] = "Issues";
 }
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="container-fluid mt-n3 p-0">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color: #6B6FE5; ">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <div class="container" style="background-color: #4E55C7;">
+                        <span class="fs-5 d-none d-sm-inline">Menu</span>
+                </a>
+                <div class="pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none" aria-expanded="false">
+                        <img src="https://github.com/JorisDeRidder42.png" alt="Profilepic" width="30" height="30" class="rounded-circle">
+                        <span class="d-none d-sm-inline mx-1">Name</span>
+                    </a>
+                </div>
+            </div>
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                <li class="nav-item">
+                    <a class="nav-link px-0 align-middle text-white" asp-controller="Home" asp-action="Index">
+                        <i class="fas fa-home"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                    </a>
+                </li>
+                <li>
+                   <a class="nav-link px-0 align-middle text-white" asp-controller="Dashboard" asp-action="Index">
+                        <i class="fas fa-bug"></i> <span class="ms-1 d-none d-sm-inline">Bugs</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link px-0 align-middle text-white" asp-controller="Gebruiker" asp-action="Index">
+                        <i class="fas fa-user"></i> <span class="ms-1 d-none d-sm-inline">Users</span>
+                    </a>
+                </li>
+            </ul>
+            <hr>
+        </div>
+    </div>
+        <div class="col py-3">
+            <div class="container">
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <h1>Issues</h1>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                       <form>
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">Title*</label>
+                            <input type="text" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Description</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1">Kind*</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>bug</option>
+                              <option>enhancement</option>
+                              <option>proposal</option>
+                              <option>task</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1">Priority*</label>
+                            <select class="form-control" id="exampleFormControlSelect2">
+                              <option>trivial</option>
+                              <option>minor</option>
+                              <option>low</option>
+                              <option>medium</option>
+                              <option>high</option>
+                              <option>critical</option>
+                              <option>blocked</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlFile1">Attachements</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Create issue</button>
+                          <a class="btn btn-light" asp-controller="Dashboard" asp-action="Index">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <div>
+    </div>
+</div>
