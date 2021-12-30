@@ -156,7 +156,8 @@ namespace BugTracker.Migrations
 
                     b.Property<string>("BugTitle")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<string>("BugType")
                         .IsRequired()

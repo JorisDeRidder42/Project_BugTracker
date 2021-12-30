@@ -44,7 +44,7 @@
                     <h1>My bugs</h1>
                 </div>
                 <div class="col-md-6 text-right">
-                    <a class="btn btn-primary text-right" asp-controller="Issue" asp-action="Index">Create issue</a>
+                    <a class="btn btn-primary text-right" asp-controller="Issue" asp-action="Create">Create issue</a>
                 </div>
             </div>
             <div class="row mt-5">
@@ -52,7 +52,7 @@
                     <thead>
                         <tr> 
                             <th class="col-md-2">
-                                @Html.DisplayNameFor(v => v.Bugs[0].BugsId)
+                               BUGS
                             </th>
                             <th class="col-md-2">
                                 @Html.DisplayNameFor(v => v.Bugs[0].BugTitle)
@@ -61,16 +61,16 @@
                                 @Html.DisplayNameFor(v => v.Bugs[0].BugDescription)
                             </th>
                             <th class="col-md-2">
-                                @Html.DisplayNameFor(v => v.Bugs[0].BugStatus)
+                                STATUS
                             </th>
                              <th class="col-md-2">
-                                @Html.DisplayNameFor(v => v.Bugs[0].BugCreatedOn)
+                               CREATED
                             </th>
                              <th class="col-md-2">
-                                @Html.DisplayNameFor(v => v.Bugs[0].BugClosedOn)
+                                DUE
                             </th>
                               <th class="col-md-2">
-                                @Html.DisplayNameFor(v => v.Bugs[0].BugCreatedBy)
+                                REPORTER
                             </th>
                         </tr>
                     </thead>

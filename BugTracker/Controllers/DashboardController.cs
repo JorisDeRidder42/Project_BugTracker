@@ -3,6 +3,7 @@ using BugTracker.Models;
 using BugTracker.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,19 @@ namespace BugTracker.Controllers
         }
 
         //[Authorize]
+        //public IActionResult Index()
+        //{
+        //    OverzichtBugsViewModel viewModel = new OverzichtBugsViewModel();
+        //    {
+        //        viewModel.Bugs = _context.Bugs.ToList();
+        //    }
+        //    return View(viewModel);
+        //}
+
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.Bugs.ToListAsync());
+        //}
         public IActionResult Index()
         {
             OverzichtBugsViewModel viewModel = new OverzichtBugsViewModel();

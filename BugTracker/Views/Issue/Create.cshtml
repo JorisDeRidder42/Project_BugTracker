@@ -1,4 +1,5 @@
-﻿@{
+﻿@model BugTracker.ViewModel.CreateBugViewModel
+@{
     ViewData["Title"] = "Issues";
 }
 <div class="container-fluid mt-n3 p-0">
@@ -44,7 +45,8 @@
                     </div>
                 </div>
                 <div class="row mt-3">
-                       <form>
+                       <form aps-action="Create">
+                           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                           <div class="form-group">
                             <label for="exampleFormControlInput1">Title*</label>
                             <input type="text" class="form-control">
@@ -75,11 +77,13 @@
                             </select>
                           </div>
                           <div class="form-group">
-                            <label for="exampleFormControlFile1">Attachements</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            <label for="formFile" class="form-label">Attachements</label>
+                            <input class="form-control" type="file" id="formFile">
                           </div>
-                          <button type="submit" class="btn btn-primary">Create issue</button>
-                          <a class="btn btn-light" asp-controller="Dashboard" asp-action="Index">Cancel</a>
+                          <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Create Issue"/>
+                            <input type="button" class="btn btn-light" asp-controller="Dashboard" asp-action="Index" value="Cancel"/>
+                         </div>
                         </form>
                     </div>
                 </div>
@@ -87,3 +91,7 @@
         <div>
     </div>
 </div>
+
+@*@section Script {
+    @{await Html.RenderPartialAsync("_ValdidationScriptsPartial");}
+}*@

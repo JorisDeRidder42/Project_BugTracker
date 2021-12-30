@@ -1,9 +1,11 @@
 ﻿using BugTracker.Areas.Data;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 
 namespace BugTracker.Models
@@ -20,16 +22,17 @@ namespace BugTracker.Models
 
         public int BugStatusId { get; set; }
 
-        [Required]
+        [StringLength(100, MinimumLength = 5)]
+        [Required(ErrorMessage = "Please enter the title of the bug")]
         public string BugTitle { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter the description of the bug")]
         public string BugDescription { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please select the type of the bug")]
         public string BugType { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter who created the bug")]
         public string BugCreatedBy { get; set; }
 
         [DataType(DataType.Date)]
