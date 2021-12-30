@@ -74,19 +74,6 @@ button.accept-policy {
     line-height: inherit;
 }
 
-.blok, .blok1 {
-    border-radius: 10px;
-    height: 100%;
-    padding: 3em;
-}
-
-.blok {
-    background-color: #4E55C7;
-}
-
-.blok1 {
-    background-color: #E8E8E8;
-}
 
 /* Sticky footer styles
 -------------------------------------------------- */
