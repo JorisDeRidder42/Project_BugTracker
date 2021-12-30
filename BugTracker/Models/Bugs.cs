@@ -22,13 +22,16 @@ namespace BugTracker.Models
 
         public int BugStatusId { get; set; }
 
+        [Display(Name = "Bug title")]
         [StringLength(100, MinimumLength = 5)]
         [Required(ErrorMessage = "Please enter the title of the bug")]
         public string BugTitle { get; set; }
 
+        [Display(Name = "Bug description")]
         [Required(ErrorMessage = "Please enter the description of the bug")]
         public string BugDescription { get; set; }
 
+        [Display(Name = "Bug type")]
         [Required(ErrorMessage = "Please select the type of the bug")]
         public string BugType { get; set; }
 
@@ -42,6 +45,10 @@ namespace BugTracker.Models
 
         [DataType(DataType.Date)]
         public DateTime? BugClosedOn { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Upload File")]
+        public IFormFile BugAfbeelding { get; set; }
 
         public ICollection<ProjectBugs> ProjectBugs { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
