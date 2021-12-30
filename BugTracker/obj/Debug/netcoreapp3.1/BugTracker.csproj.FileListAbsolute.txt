@@ -409,5 +409,5 @@ C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netc
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\BugTracker.pdb
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\BugTracker.genruntimeconfig.cache
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\Help.cshtml.g.cs
-C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Issue\Create.cshtml.g.cs
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\BugTracker.csproj.AssemblyReference.cache
+C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Issue\Index.cshtml.g.cs
