@@ -21,24 +21,27 @@ namespace BugTracker.Controllers
         }
 
         //[Authorize]
-        //public IActionResult Index()
-        //{
-        //    OverzichtBugsViewModel viewModel = new OverzichtBugsViewModel();
-        //    {
-        //        viewModel.Bugs = _context.Bugs.ToList();
-        //    }
-        //    return View(viewModel);
-        //}
-
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View(await _context.Bugs.ToListAsync());
-        //}
         public IActionResult Index()
         {
             OverzichtBugsViewModel viewModel = new OverzichtBugsViewModel();
             {
                 viewModel.Bugs = _context.Bugs.ToList();
+            }
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreateBugViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Bugs bugs = new Bugs
+                {
+                    BugsId = viewModel.BugsId,
+                    BugTitle = viewModel.BugTitle,
+                    BugDescription = viewModel.BugDescription,
+                };
             }
             return View(viewModel);
         }

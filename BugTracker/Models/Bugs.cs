@@ -18,7 +18,7 @@ namespace BugTracker.Models
 
         public int ApplicationId { get; set; }
 
-        public int? BugsPriorityId { get; set; }
+        public int BugsPriorityId { get; set; }
 
         public int BugStatusId { get; set; }
 
@@ -35,7 +35,7 @@ namespace BugTracker.Models
         [Required(ErrorMessage = "Please select the type of the bug")]
         public string BugType { get; set; }
 
-        [Required(ErrorMessage = "Please enter who created the bug")]
+        [Required(ErrorMessage = "Please enter your name")]
         public string BugCreatedBy { get; set; }
 
         [DataType(DataType.Date)]

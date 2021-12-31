@@ -28,14 +28,12 @@ VALUES('Medium')
 INSERT INTO BugTracker.BugsPriority
 VALUES('High')
 
---INSERT INTO dbo.[User]
---VALUES('Jeuris42','Joris.42@hotmail.com', 0, 'Meloen','Meloen', '0492641323', 1,1,null,1,0,1,1, 'Jeuris42', 'Meloen','1997-02-21',
---'1997-02-21', 'Joris', 'De Ridder', 'Joris.42@hotmail.com',0,1)
---INSERT INTO BugTracker.[User]
---VALUES('TankZwaluw', 'Aardbei', '2000-10-11', 'Alec', 'Van Oosterwick', 'TankZwaluw@hotmail.com',0,2)
+INSERT INTO BugTracker.ApplicationUser
+VALUES('Jeuris42','Joris.42@hotmail.com', 1,'Meloen',null,null,'0492641323', 1,1,null,1,0,1,1,1, 'Jeuris42', 'Meloen','1997-02-21 12:00:00', 'Joris', 'De Ridder', 'Joris.42@hotmail.com',1)
 
-INSERT INTO BugTracker.Bugs(BugsPriorityID, BugStatusID, BugTitle, BugDescription, BugType, BugCreatedBy, BugCreatedOn, BugClosedBy, BugClosedOn)
-VALUES(9,27,'Databaseconnectionstring', 'kan geen verbinding maken met de db', 'Usability defects', 'Alec','2021-12-14', null, null)
+
+INSERT INTO BugTracker.Bugs(ApplicationId, BugStatusID, BugTitle, BugDescription, BugType, BugCreatedBy, BugCreatedOn, BugClosedBy, BugClosedOn)
+VALUES(1,1,2,'Databaseconnectionstring', 'kan geen verbinding maken met de db', 'Usability defects', 'Alec','2021-12-14', null, null)
 
 INSERT INTO BugTracker.Teams
 VALUES('JullieZijnGeslaag', 2,3)
