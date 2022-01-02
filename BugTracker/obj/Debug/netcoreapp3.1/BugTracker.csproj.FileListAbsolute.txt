@@ -389,10 +389,12 @@ C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netc
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\Create.cshtml.g.cs
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\Index.cshtml.g.cs
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Detail\Index.cshtml.g.cs
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Gebruiker\Index.cshtml.g.cs
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Gebruiker\Verwijderen.cshtml.g.cs
+C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\Help.cshtml.g.cs
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
@@ -408,6 +410,3 @@ C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netc
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\BugTracker.dll
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\BugTracker.pdb
 C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\BugTracker.genruntimeconfig.cache
-C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Home\Help.cshtml.g.cs
-C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\BugTracker.csproj.AssemblyReference.cache
-C:\Users\joris\Bureaublad\PROJECTEN\Project_BugTracker\BugTracker\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\Create.cshtml.g.cs

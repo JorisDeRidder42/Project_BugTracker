@@ -46,9 +46,9 @@ namespace BugTracker.Models
         [DataType(DataType.Date)]
         public DateTime? BugClosedOn { get; set; }
 
-        [NotMapped]
-        [Display(Name = "Upload File")]
-        public IFormFile BugAfbeelding { get; set; }
+        //[NotMapped]
+        //[Display(Name = "Upload File")]
+        //public IFormFile BugAfbeelding { get; set; }
 
         public ICollection<ProjectBugs> ProjectBugs { get; set; }
         public ApplicationUser ApplicationUser { get; set; }

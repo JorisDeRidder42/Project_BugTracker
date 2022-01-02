@@ -24,9 +24,7 @@ namespace BugTracker.Controllers
         public IActionResult Index()
         {
             OverzichtBugsViewModel viewModel = new OverzichtBugsViewModel();
-            {
-                viewModel.Bugs = _context.Bugs.ToList();
-            }
+            viewModel.Bugs = _context.Bugs.ToList();
             return View(viewModel);
         }
 
@@ -42,6 +40,9 @@ namespace BugTracker.Controllers
                     BugTitle = viewModel.BugTitle,
                     BugDescription = viewModel.BugDescription,
                 };
+                _context.Add(bugs);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
             return View(viewModel);
         }
