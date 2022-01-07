@@ -251,13 +251,11 @@ namespace BugTracker.Migrations
                 {
                     BugsId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ApplicationId = table.Column<int>(nullable: false),
+                    ApplicationUserId = table.Column<int>(nullable: false),
                     BugsPriorityId = table.Column<int>(nullable: false),
                     BugStatusId = table.Column<int>(nullable: false),
-                    ApplicationUserId = table.Column<int>(nullable: false),
                     BugTitle = table.Column<string>(maxLength: 100, nullable: false),
                     BugDescription = table.Column<string>(nullable: false),
-                    BugType = table.Column<string>(nullable: false),
                     BugCreatedBy = table.Column<string>(nullable: false),
                     BugCreatedOn = table.Column<DateTime>(nullable: false),
                     BugClosedBy = table.Column<string>(nullable: true),

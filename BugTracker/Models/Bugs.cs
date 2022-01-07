@@ -16,14 +16,6 @@ namespace BugTracker.Models
         [Key]
         public int BugsId { get; set; }
 
-        public int ApplicationId { get; set; }
-
-        public int BugsPriorityId { get; set; }
-
-        public int BugStatusId { get; set; }
-
-        public int ApplicationUserId { get; set; }
-
         [Display(Name = "Bug title")]
         [StringLength(100, MinimumLength = 5)]
         [Required(ErrorMessage = "Please enter the title of the bug")]
@@ -34,7 +26,7 @@ namespace BugTracker.Models
         public string BugDescription { get; set; }
 
         [Display(Name = "Bug type")]
-        [Required(ErrorMessage = "Please select the type of the bug")]
+        [Required(ErrorMessage = "Please choose the type of the bug")]
         public string BugType { get; set; }
 
         [Required(ErrorMessage = "Please enter your name")]
@@ -48,13 +40,7 @@ namespace BugTracker.Models
         [DataType(DataType.Date)]
         public DateTime? BugClosedOn { get; set; }
 
-        //[NotMapped]
-        //[Display(Name = "Upload File")]
-        //public IFormFile BugAfbeelding { get; set; }
-
         public ICollection<ProjectBugs> ProjectBugs { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
-        public BugStatus BugStatus { get; set; }
-        public BugsPriority BugsPriority { get; set; }
     }
 }

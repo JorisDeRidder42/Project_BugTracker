@@ -4,12 +4,12 @@
 }
             <div class="container">
                 <div class="row mt-3">
-                    <div class="col-md-12">
+                    <div class="col">
                         <h1>Issues</h1>
                     </div>
                 </div>
                 <div class="row mt-3">
-                       <form aps-action="Create">
+                       <form aps-action="Create" method="post">
                           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                           <div class="form-group">
                             <label asp-for="BugTitle">Title*</label>
@@ -18,37 +18,42 @@
                           </div>
 
                           <div class="form-group">
-                            <label asp-for="BugDescription">Description</label>
+                            <label asp-for="BugDescription">Description*</label>
                             <textarea asp-for="BugDescription" class="form-control" rows="3"></textarea>
                             <span asp-validation-for="BugDescription" class="text-danger"></span>
                           </div>
-               
-                          <div class="form-group">
-                            <label for="exampleFormControlSelect1">Priority*</label>
-                            <select class="form-control">
-                              <option>trivial</option>
-                              <option>minor</option>
-                              <option>low</option>
-                              <option>medium</option>
-                              <option>high</option>
-                              <option>critical</option>
-                              <option>blocked</option>
-                            </select>
-                            </div>
 
                             <div class="form-group">
-                            <label asp-for="BugCreatedBy">Created by</label>
+                                <label asp-for="BugType" class="control-label">Type*</label>
+                                <input asp-for="BugType" class="form-control"/>
+                                <span asp-validation-for="BugType" class="text-danger"></span>
+                            </div>
+                           
+                            <div class="form-group">
+                            <label asp-for="BugCreatedBy">Created by*</label>
                             <input asp-for="BugCreatedBy" class="form-control"/>
                             <span asp-validation-for="BugCreatedBy" class="text-danger"></span>
                           </div>
                           <div class="form-group">
-                            <label asp-for="BugCreatedOn">Created on</label>
+                            <label asp-for="BugCreatedOn">Created on*</label>
                             <input asp-for="BugCreatedOn" class="form-control"/>
                             <span asp-validation-for="BugCreatedOn" class="text-danger"></span>
-                     
                           </div>
+
                           <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Create Issue"/>
+                            <label asp-for="BugClosedBy">Closed by</label>
+                            <input asp-for="BugClosedBy" class="form-control"/>
+                             <span asp-validation-for="BugClosedBy" class="text-danger"></span>
+                          </div>
+
+                          <div class="form-group">
+                            <label asp-for="BugClosedOn">Closed on</label>
+                            <input asp-for="BugClosedOn" class="form-control"/>
+                             <span asp-validation-for="BugClosedOn" class="text-danger"></span>
+                          </div>
+
+                          <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Create"/>
                             <a asp-action="Index" class="btn btn-light">Cancel</a>
                          </div>
                         </form>

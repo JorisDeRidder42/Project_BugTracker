@@ -76,7 +76,7 @@ namespace BugTracker
             bool roleCheck = await roleManager.RoleExistsAsync("user");
             if (!roleCheck)
             {
-                result = await roleManager.CreateAsync(new IdentityRole("User"));
+                result = await roleManager.CreateAsync(new IdentityRole("user"));
             }
             //admin role aanmaken als het nog niet bestaat
             roleCheck = await roleManager.RoleExistsAsync("admin");

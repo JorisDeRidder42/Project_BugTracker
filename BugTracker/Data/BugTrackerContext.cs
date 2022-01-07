@@ -17,27 +17,25 @@ namespace BugTracker.Data
         }
 
         public DbSet<Bugs> Bugs { get; set; }
-        public DbSet<BugsPriority> BugsPriority { get; set; }
-        public DbSet<BugStatus> BugStatus { get; set; }
         public DbSet<ProjectBugs> ProjectBugs { get; set; }
         public DbSet<Projects> Projects { get; set; }
         public DbSet<ProjectsAcces> ProjectsAcces { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<Team> Team { get; set; }
+        public DbSet<TeamProject> TeamProjects { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("BugTracker");
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Bugs>().ToTable("Bugs");
             modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUser");
+            modelBuilder.Entity<Bugs>().ToTable("Bugs");
             modelBuilder.Entity<Projects>().ToTable("Projects");
             modelBuilder.Entity<ProjectBugs>().ToTable("ProjectBugs");
-            modelBuilder.Entity<BugStatus>().ToTable("BugStatus");
             modelBuilder.Entity<ProjectsAcces>().ToTable("ProjectsAcces");
-            modelBuilder.Entity<BugStatus>().ToTable("BugStatus");
-            modelBuilder.Entity<BugsPriority>().ToTable("BugsPriority");
-            modelBuilder.Entity<Bugs>().ToTable("Bugs");
+            modelBuilder.Entity<Team>().ToTable("Team");
+            modelBuilder.Entity<TeamProject>().ToTable("TeamProject");
         }
     }
 }

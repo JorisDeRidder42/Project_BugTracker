@@ -12,16 +12,19 @@ using System.Threading.Tasks;
 
 namespace BugTracker.Controllers
 {
+    //[Area("user")]
+    //[Authorize(Roles = "user")]
     public class DashboardController : Controller
     {
         private readonly BugTrackerContext _context;
 
         public DashboardController(BugTrackerContext context)
+
         {
             _context = context;
         }
 
-        [AllowAnonymous]
+        [Authorize]
         public IActionResult Index()
         {
             OverzichtBugsViewModel viewModel = new OverzichtBugsViewModel();
@@ -40,7 +43,7 @@ namespace BugTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                Bugs bugs = new Bugs
+                Bugs bugs = new Bugs()
                 {
                     BugsId = viewModel.BugsId,
                     BugTitle = viewModel.BugTitle,
@@ -48,11 +51,12 @@ namespace BugTracker.Controllers
                     BugType = viewModel.BugType,
                     BugCreatedBy = viewModel.BugCreatedBy,
                     BugClosedBy = viewModel.BugClosedBy,
+                    BugCreatedOn = viewModel.BugCreatedOn,
                     BugClosedOn = viewModel.BugClosedOn,
                 };
-                _context.Add(bugs);
+                _context.Bugs.Add(bugs);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(viewModel);
         }

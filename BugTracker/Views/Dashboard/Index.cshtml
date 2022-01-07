@@ -11,56 +11,49 @@
                         <a class="btn btn-primary text-right" asp-action="Create">Create issue</a>
                     </div>
                </div>
-           <div>
-       </div>
                 <div class="row mt-5">
                  <table>
                     <thead>
-                        <tr> 
+                        <tr>
                             <th class="col-md-2">
-                               Bugs
+                                Id
                             </th>
                             <th class="col-md-2">
                                 Title
                             </th>
-                            <th class="col-md-2">
+                            <th class="col-md-4">
                                 Description
-                            </th>
-                            <th class="col-md-2">
-                                Status
-                            </th>
-                            <th class="col-md-2">
-                                Due
                             </th>
                             <th class="col-md-2">
                                 Reporter
                             </th>
+                            <th class="col-md-2">
+                                Due
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.Bugs)
-                        {
-                            <tr>
-                                <td class="col-md-2">
-                                    @Html.DisplayFor(modelItem => item.BugsId)
-                                </td>
-                               <td class="col-md-2">
-                                    @Html.DisplayFor(modelItem => item.BugTitle)
-                                </td>
-                                <td class="col-md-2">
-                                    @Html.DisplayFor(modelItem => item.BugDescription)
-                                </td>
-                                <td class="col-md-2">
-                                    @Html.DisplayFor(modelItem => item.BugStatus)
-                                </td>
-                                <td class="col-md-2">
-                                    @Html.DisplayFor(modelItem => item.BugClosedOn)
-                                </td>
-                                <td class="col-md-2">
-                                    @Html.DisplayFor(modelItem => item.BugCreatedBy)
-                                </td>
-                            </tr>
-                        }
+                            @foreach (var item in Model.Bugs)
+                                {
+                                    <tr>
+                                        <td class="col-md-2">
+   
+                                            @Html.DisplayFor(modelItem => item.BugsId)
+                                        </td>
+                                       <td class="col-md-2">
+                                            @Html.DisplayFor(modelItem => item.BugTitle)
+                                        </td>
+                                        <td class="col-md-4">
+                                            @Html.DisplayFor(modelItem => item.BugDescription)
+                                        </td>
+                                        <td class="col-md-2">
+                                            @Html.DisplayFor(modelItem => item.BugCreatedBy)
+                                        </td>
+                                        <td class="col-md-2">
+                                            @Html.DisplayFor(modelItem => item.BugCreatedOn)
+                                        </td>
+                                    </tr>
+                            }
                     </tbody>
                 </table>
             </div>

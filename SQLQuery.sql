@@ -34,8 +34,10 @@ INSERT INTO BugTracker.ApplicationUser
 VALUES(2,'TankZwaluw','Alec@hotmail.com', 1,'Banaan',null,null,'0492772512', 1,1,null,1,0,2,2,'TankZwaluw', 'Banaan','2000-04-12', 'Alec', 'Van oosterwick', 'Alec@hotmail.com',1)
 
 
-INSERT INTO BugTracker.Bugs(ApplicationId, BugStatusID, BugTitle, BugDescription, BugType, BugCreatedBy, BugCreatedOn, BugClosedBy, BugClosedOn)
-VALUES(1,1,'Databaseconnectionstring', 'kan geen verbinding maken met de db', 'Usability defects', 'Alec','2021-12-14', null, null)
+INSERT INTO BugTracker.Bugs
+VALUES(1,2,3,'Databaseconnectionstring', 'kan geen verbinding maken met de db', 'Alec','2021-12-14', null, null, 1)
+INSERT INTO BugTracker.Bugs
+VALUES(2,3,3,'Bugs tonen', 'Bugs worden niet getoond', 'Joris','2022-01-07', null, null,2)
 
 INSERT INTO BugTracker.Teams
 VALUES('JullieZijnGeslaagd', 2,1)

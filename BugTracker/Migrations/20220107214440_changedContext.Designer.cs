@@ -4,14 +4,16 @@ using BugTracker.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BugTracker.Migrations
 {
     [DbContext(typeof(BugTrackerContext))]
-    partial class BugTrackerContextModelSnapshot : ModelSnapshot
+    [Migration("20220107214440_changedContext")]
+    partial class changedContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,6 +135,9 @@ namespace BugTracker.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("BugStatusId")
+                        .HasColumnType("int");
+
                     b.Property<string>("BugTitle")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
@@ -142,11 +147,31 @@ namespace BugTracker.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("BugsPriorityId")
+                        .HasColumnType("int");
+
                     b.HasKey("BugsId");
 
                     b.HasIndex("ApplicationUserId");
 
+                    b.HasIndex("BugsPriorityId");
+
                     b.ToTable("Bugs","BugTracker");
+                });
+
+            modelBuilder.Entity("BugTracker.Models.BugsPriority", b =>
+                {
+                    b.Property<int>("BugsPriorityId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("PriorityType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BugsPriorityId");
+
+                    b.ToTable("BugsPriority","BugTracker");
                 });
 
             modelBuilder.Entity("BugTracker.Models.ProjectBugs", b =>
@@ -413,6 +438,12 @@ namespace BugTracker.Migrations
                     b.HasOne("BugTracker.Areas.Data.ApplicationUser", "ApplicationUser")
                         .WithMany("Bugs")
                         .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("BugTracker.Models.BugsPriority", "BugsPriority")
+                        .WithMany("Bugs")
+                        .HasForeignKey("BugsPriorityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BugTracker.Models.ProjectBugs", b =>
