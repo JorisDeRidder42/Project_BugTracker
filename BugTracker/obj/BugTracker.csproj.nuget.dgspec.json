@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project_BugTracker\\Project_BugTracker\\BugTracker\\BugTracker.csproj": {}
+    "C:\\Users\\joris\\Bureaublad\\PROJECTEN\\Project_BugTracker\\BugTracker\\BugTracker.csproj": {}
   },
   "projects": {
-    "D:\\Project_BugTracker\\Project_BugTracker\\BugTracker\\BugTracker.csproj": {
+    "C:\\Users\\joris\\Bureaublad\\PROJECTEN\\Project_BugTracker\\BugTracker\\BugTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project_BugTracker\\Project_BugTracker\\BugTracker\\BugTracker.csproj",
+        "projectUniqueName": "C:\\Users\\joris\\Bureaublad\\PROJECTEN\\Project_BugTracker\\BugTracker\\BugTracker.csproj",
         "projectName": "BugTracker",
-        "projectPath": "D:\\Project_BugTracker\\Project_BugTracker\\BugTracker\\BugTracker.csproj",
+        "projectPath": "C:\\Users\\joris\\Bureaublad\\PROJECTEN\\Project_BugTracker\\BugTracker\\BugTracker.csproj",
         "packagesPath": "C:\\Users\\joris\\.nuget\\packages\\",
-        "outputPath": "D:\\Project_BugTracker\\Project_BugTracker\\BugTracker\\obj\\",
+        "outputPath": "C:\\Users\\joris\\Bureaublad\\PROJECTEN\\Project_BugTracker\\BugTracker\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\joris\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,15 +42,37 @@
           "dependencies": {
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.20, )"
+              "version": "[3.1.21, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.20, )"
+              "version": "[3.1.21, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[3.1.20, )"
+              "version": "[3.1.21, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.21, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[3.1.21, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.21, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.21, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.5, )"
             }
           },
           "imports": [
@@ -71,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

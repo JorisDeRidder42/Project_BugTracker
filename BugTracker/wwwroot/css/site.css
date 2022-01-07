@@ -1,10 +1,4 @@
-﻿a.navbar-brand {
-    white-space: normal;
-    text-align: center;
-    word-break: break-all;
-}
-
-a.nav-link {
+﻿a.nav-link {
     margin-right: 4em;
 }
 
@@ -30,7 +24,7 @@ a.nav-link {
 .btn-primary {
     background-color: #4E55C7;
     color: #fff;
-    border: 3px solid #4E55C7;
+    border: 3px solid #ffffff;
     transition: ease-in-out 0.5s;
     border-radius: 5px;
     margin-top: 10px;
@@ -46,13 +40,20 @@ a.nav-link {
         transition: ease-in-out 0.5s;
     }
 
+.inline-p {
+    color: #4E55C7;
+    font-weight: 600;
+    display: inline;
+    margin-left: 6em;
+}
+
 html {
-    font-size: 20px;
+    font-size: 1.5rem;
 }
 
 @media (min-width: 768px) {
     html {
-        font-size: 16px;
+        font-size: 1rem;
     }
 }
 
@@ -73,24 +74,9 @@ button.accept-policy {
     line-height: inherit;
 }
 
-.blok, .blok1 {
-    border-radius: 10px;
-    height: 100%;
-    padding: 3em;
-}
-
-.blok {
-    background-color: #4E55C7;
-}
-
-.blok1 {
-    background-color: #E8E8E8;
-}
-
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-    position: relative;
     min-height: 100%;
     font-family: 'Poppins', sans-serif;
 }
@@ -100,10 +86,12 @@ body {
     margin-bottom: 60px;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
+th.col-md-2 {
+    color: #4E55C7;
+    text-transform: uppercase;
+}
+
+th.col-md-4 {
+    color: #4E55C7;
+    text-transform: uppercase;
 }

@@ -1,4 +1,6 @@
-﻿using BugTracker.Models;
+﻿using BugTracker.Data;
+using BugTracker.Models;
+using BugTracker.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,11 +13,11 @@ namespace BugTracker.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly BugTrackerContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(BugTrackerContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()

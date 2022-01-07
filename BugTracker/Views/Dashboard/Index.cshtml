@@ -1,0 +1,60 @@
+﻿@model BugTracker.ViewModel.OverzichtBugsViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+           <div class="container">
+               <div class="row mt-3">
+                   <div class="col-md-6">
+                       <h1>Bugs</h1>
+                   </div>
+                    <div class="col-md-6 text-right">
+                        <a class="btn btn-primary text-right" asp-action="Create">Create issue</a>
+                    </div>
+               </div>
+                <div class="row mt-5">
+                 <table>
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">
+                                Id
+                            </th>
+                            <th class="col-md-2">
+                                Title
+                            </th>
+                            <th class="col-md-4">
+                                Description
+                            </th>
+                            <th class="col-md-2">
+                                Reporter
+                            </th>
+                            <th class="col-md-2">
+                                Due
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            @foreach (var item in Model.Bugs)
+                                {
+                                    <tr>
+                                        <td class="col-md-2">
+   
+                                            @Html.DisplayFor(modelItem => item.BugsId)
+                                        </td>
+                                       <td class="col-md-2">
+                                            @Html.DisplayFor(modelItem => item.BugTitle)
+                                        </td>
+                                        <td class="col-md-4">
+                                            @Html.DisplayFor(modelItem => item.BugDescription)
+                                        </td>
+                                        <td class="col-md-2">
+                                            @Html.DisplayFor(modelItem => item.BugCreatedBy)
+                                        </td>
+                                        <td class="col-md-2">
+                                            @Html.DisplayFor(modelItem => item.BugCreatedOn)
+                                        </td>
+                                    </tr>
+                            }
+                    </tbody>
+                </table>
+            </div>
+        </div>
