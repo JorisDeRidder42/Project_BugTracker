@@ -252,8 +252,9 @@ namespace BugTracker.Migrations
                     BugsId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ApplicationId = table.Column<int>(nullable: false),
-                    BugsPriorityId = table.Column<int>(nullable: true),
+                    BugsPriorityId = table.Column<int>(nullable: false),
                     BugStatusId = table.Column<int>(nullable: false),
+                    ApplicationUserId = table.Column<int>(nullable: false),
                     BugTitle = table.Column<string>(maxLength: 100, nullable: false),
                     BugDescription = table.Column<string>(nullable: false),
                     BugType = table.Column<string>(nullable: false),
@@ -261,14 +262,14 @@ namespace BugTracker.Migrations
                     BugCreatedOn = table.Column<DateTime>(nullable: false),
                     BugClosedBy = table.Column<string>(nullable: true),
                     BugClosedOn = table.Column<DateTime>(nullable: true),
-                    ApplicationUserId = table.Column<string>(nullable: true)
+                    ApplicationUserId1 = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Bugs", x => x.BugsId);
                     table.ForeignKey(
-                        name: "FK_Bugs_ApplicationUser_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
+                        name: "FK_Bugs_ApplicationUser_ApplicationUserId1",
+                        column: x => x.ApplicationUserId1,
                         principalSchema: "BugTracker",
                         principalTable: "ApplicationUser",
                         principalColumn: "Id",
@@ -286,7 +287,7 @@ namespace BugTracker.Migrations
                         principalSchema: "BugTracker",
                         principalTable: "BugsPriority",
                         principalColumn: "BugsPriorityId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -425,10 +426,10 @@ namespace BugTracker.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bugs_ApplicationUserId",
+                name: "IX_Bugs_ApplicationUserId1",
                 schema: "BugTracker",
                 table: "Bugs",
-                column: "ApplicationUserId");
+                column: "ApplicationUserId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bugs_BugStatusId",

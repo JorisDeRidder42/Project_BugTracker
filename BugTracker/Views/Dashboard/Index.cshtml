@@ -2,44 +2,13 @@
 @{
     ViewData["Title"] = "Dashboard";
 }
-<div class="container-fluid" style="padding-left:0px">
-    <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color: #6B6FE5; margin-top: -16px;">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100" style="background-color: #6B6FE5;">
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                   <div class="pb-4">
-                        <a href="#" class="d-flex align-items-center text-white text-decoration-none" aria-expanded="false">
-                            <img src="https://github.com/JorisDeRidder42.png" alt="Profilepic" width="30" height="30" class="rounded-circle">
-                            <span class="d-none d-sm-inline mx-1">Loser</span>
-                        </a>
-                   </div>
-                    <li class="nav-item">
-                        <a class="nav-link px-0 align-middle text-white" asp-controller="Home" asp-action="Index">
-                            <i class="fas fa-home"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link px-0 align-middle text-white" asp-controller="Dashboard" asp-action="Index">
-                            <i class="fas fa-bug"></i> <span class="ms-1 d-none d-sm-inline">Bugs</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link px-0 align-middle text-white" asp-controller="Gebruiker" asp-action="Index">
-                            <i class="fas fa-user"></i> <span class="ms-1 d-none d-sm-inline">Users</span>
-                        </a>
-                    </li>
-                </ul>
-                <hr />
-            </div>
-        </div>
-           <div class="col py-3">
            <div class="container">
                <div class="row mt-3">
                    <div class="col-md-6">
                        <h1>Bugs</h1>
                    </div>
                     <div class="col-md-6 text-right">
-                        <a class="btn btn-primary text-right" asp-controller="Dashboard" asp-action="Create">Create issue</a>
+                        <a class="btn btn-primary text-right" asp-action="Create">Create issue</a>
                     </div>
                </div>
            <div>
@@ -96,5 +65,3 @@
                 </table>
             </div>
         </div>
-    </div>
-</div>

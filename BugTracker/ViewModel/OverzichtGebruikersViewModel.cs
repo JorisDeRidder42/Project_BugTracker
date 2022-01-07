@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BugTracker.ViewModel
 {
-    public class GebruikerListViewModel
+    public class OverzichtGebruikersViewModel
     {
         public List<ApplicationUser> Users { get; set; }
     }

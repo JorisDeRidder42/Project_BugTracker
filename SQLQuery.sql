@@ -29,13 +29,15 @@ INSERT INTO BugTracker.BugsPriority
 VALUES('High')
 
 INSERT INTO BugTracker.ApplicationUser
-VALUES('Jeuris42','Joris.42@hotmail.com', 1,'Meloen',null,null,'0492641323', 1,1,null,1,0,1,1,1, 'Jeuris42', 'Meloen','1997-02-21 12:00:00', 'Joris', 'De Ridder', 'Joris.42@hotmail.com',1)
+VALUES(1,'Jeuris42','Joris.42@hotmail.com', 1,'Meloen',null,null,'0492641323', 1,1,null,1,0,1,1,'Jeuris42', 'Meloen','1997-02-21', 'Joris', 'De Ridder', 'Joris.42@hotmail.com',1)
+INSERT INTO BugTracker.ApplicationUser
+VALUES(2,'TankZwaluw','Alec@hotmail.com', 1,'Banaan',null,null,'0492772512', 1,1,null,1,0,2,2,'TankZwaluw', 'Banaan','2000-04-12', 'Alec', 'Van oosterwick', 'Alec@hotmail.com',1)
 
 
 INSERT INTO BugTracker.Bugs(ApplicationId, BugStatusID, BugTitle, BugDescription, BugType, BugCreatedBy, BugCreatedOn, BugClosedBy, BugClosedOn)
-VALUES(1,1,2,'Databaseconnectionstring', 'kan geen verbinding maken met de db', 'Usability defects', 'Alec','2021-12-14', null, null)
+VALUES(1,1,'Databaseconnectionstring', 'kan geen verbinding maken met de db', 'Usability defects', 'Alec','2021-12-14', null, null)
 
 INSERT INTO BugTracker.Teams
-VALUES('JullieZijnGeslaag', 2,3)
+VALUES('JullieZijnGeslaagd', 2,1)
 INSERT INTO BugTracker.Teams
-VALUES('JullieZijnGeslaag', 2,4)
+VALUES('Thecoders', 2,2)

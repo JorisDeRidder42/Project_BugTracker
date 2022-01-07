@@ -8,22 +8,23 @@ using System.Linq;
 
 namespace BugTracker.Controllers
 {
-    //[Area("Admin")]
-    //[Authorize(Roles = "Admin")]
+    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class GebruikerController : Controller
     {
-        private UserManager<ApplicationUser> _gebruikerManager;
+        private UserManager<ApplicationUser> _userManager;
 
         public GebruikerController(UserManager<ApplicationUser> userManager)
         {
-            _gebruikerManager = userManager;
+            _userManager = userManager;
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
-            GebruikerListViewModel gviewModel = new GebruikerListViewModel()
+            OverzichtGebruikersViewModel gviewModel = new OverzichtGebruikersViewModel()
             {
-                Users = _gebruikerManager.Users.ToList()
+                Users = _userManager.Users.ToList()
             };
             return View(gviewModel);
         }

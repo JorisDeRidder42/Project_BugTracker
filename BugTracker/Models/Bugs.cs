@@ -22,6 +22,8 @@ namespace BugTracker.Models
 
         public int BugStatusId { get; set; }
 
+        public int ApplicationUserId { get; set; }
+
         [Display(Name = "Bug title")]
         [StringLength(100, MinimumLength = 5)]
         [Required(ErrorMessage = "Please enter the title of the bug")]

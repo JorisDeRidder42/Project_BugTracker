@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BugTracker.Migrations
 {
     [DbContext(typeof(BugTrackerContext))]
-    [Migration("20211230085350_InitialCreate")]
+    [Migration("20220107135940_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -133,7 +133,10 @@ namespace BugTracker.Migrations
                     b.Property<int>("ApplicationId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ApplicationUserId")
+                    b.Property<int>("ApplicationUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplicationUserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("BugClosedBy")
@@ -165,12 +168,12 @@ namespace BugTracker.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("BugsPriorityId")
+                    b.Property<int>("BugsPriorityId")
                         .HasColumnType("int");
 
                     b.HasKey("BugsId");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("ApplicationUserId1");
 
                     b.HasIndex("BugStatusId");
 
@@ -242,7 +245,7 @@ namespace BugTracker.Migrations
 
                     b.HasKey("ProjectsId");
 
-                    b.ToTable("Projects","BugTracker");
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("BugTracker.Models.ProjectsAcces", b =>
@@ -457,7 +460,7 @@ namespace BugTracker.Migrations
                 {
                     b.HasOne("BugTracker.Areas.Data.ApplicationUser", "ApplicationUser")
                         .WithMany("Bugs")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("ApplicationUserId1");
 
                     b.HasOne("BugTracker.Models.BugStatus", "BugStatus")
                         .WithMany("Bugs")
@@ -467,7 +470,9 @@ namespace BugTracker.Migrations
 
                     b.HasOne("BugTracker.Models.BugsPriority", "BugsPriority")
                         .WithMany("Bugs")
-                        .HasForeignKey("BugsPriorityId");
+                        .HasForeignKey("BugsPriorityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BugTracker.Models.ProjectBugs", b =>

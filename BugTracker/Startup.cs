@@ -63,28 +63,28 @@ namespace BugTracker
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-            //CreateRoles(serviceProvider).Wait();
+            CreateRoles(serviceProvider).Wait();
         }
 
-        //private async object CreateRoles(IServiceProvider serviceProvider)
-        //{
-        //    RoleManager<ApplicationUser> roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationUser>>();
-        //    BugTrackerContext bugTrackercontext = serviceProvider.GetRequiredService<BugTrackerContext>();
+        private async Task CreateRoles(IServiceProvider serviceProvider)
+        {
+            RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            BugTrackerContext context = serviceProvider.GetRequiredService<BugTrackerContext>();
 
-        //    IdentityResult result;
+            IdentityResult result;
 
-        //    bool roleCheck = await roleManager.RoleExistsAsync("user");
-        //    if (!roleCheck)
-        //    {
-        //        result = await roleManager.CreateAsync(new ApplicationUser("User"));
-        //    }
-        //    //admin role aanmaken als het nog niet bestaat
-        //    roleCheck = await roleManager.RoleExistsAsync("admin");
-        //    if (!roleCheck)
-        //    {
-        //        result = await roleManager.CreateAsync(new ApplicationUser("admin"));
-        //    }
-        //    context.SaveChanges();
-        //}
+            bool roleCheck = await roleManager.RoleExistsAsync("user");
+            if (!roleCheck)
+            {
+                result = await roleManager.CreateAsync(new IdentityRole("User"));
+            }
+            //admin role aanmaken als het nog niet bestaat
+            roleCheck = await roleManager.RoleExistsAsync("admin");
+            if (!roleCheck)
+            {
+                result = await roleManager.CreateAsync(new IdentityRole("admin"));
+            }
+            context.SaveChanges();
+        }
     }
 }
